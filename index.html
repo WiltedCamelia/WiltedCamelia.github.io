@@ -3,127 +3,213 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>WiltedCamelia</title>
 
 <style>
+
 :root{
-    --bg:#151915;
-    --panel:#202620;
-    --accent:#58724D;
-    --highlight:#8DAA7B;
-    --text:#E8E2D6;
+--bg:#0d120f;
+--panel:#182019;
+--accent:#5d7a54;
+--highlight:#a7c795;
+--text:#ece6db;
 }
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
 }
 
 body{
-    font-family: Georgia, serif;
-    background:var(--bg);
-    color:var(--text);
-    line-height:1.6;
+background:linear-gradient(
+180deg,
+#0d120f,
+#111814,
+#0d120f
+);
+color:var(--text);
+font-family:Georgia, serif;
+overflow-x:hidden;
 }
 
+/* FIRELIES */
+
+.firefly{
+position:fixed;
+width:4px;
+height:4px;
+background:#d8f0a4;
+border-radius:50%;
+box-shadow:0 0 15px #d8f0a4;
+animation:float 8s infinite ease-in-out;
+pointer-events:none;
+}
+
+.firefly:nth-child(1){
+left:20%;
+top:20%;
+animation-delay:0s;
+}
+
+.firefly:nth-child(2){
+left:60%;
+top:60%;
+animation-delay:2s;
+}
+
+.firefly:nth-child(3){
+left:80%;
+top:30%;
+animation-delay:4s;
+}
+
+@keyframes float{
+50%{
+transform:translateY(-30px);
+}
+}
+
+/* NAV */
+
 nav{
-    background:#111;
-    padding:1rem;
-    position:sticky;
-    top:0;
+position:sticky;
+top:0;
+background:rgba(0,0,0,0.75);
+backdrop-filter:blur(8px);
+padding:20px;
+z-index:100;
 }
 
 nav ul{
-    display:flex;
-    justify-content:center;
-    gap:2rem;
-    list-style:none;
+display:flex;
+justify-content:center;
+gap:40px;
+list-style:none;
 }
 
 nav a{
-    color:var(--text);
-    text-decoration:none;
+color:var(--text);
+text-decoration:none;
+transition:.3s;
 }
 
 nav a:hover{
-    color:var(--highlight);
+color:var(--highlight);
 }
 
+/* HERO */
+
 .hero{
-    min-height:80vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:2rem;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:40px;
 }
 
 .hero h1{
-    font-size:4rem;
-    margin-bottom:1rem;
+font-size:6rem;
+margin-bottom:20px;
+text-shadow:0 0 20px rgba(255,255,255,.1);
 }
 
 .hero p{
-    max-width:600px;
-    margin-bottom:2rem;
+font-size:1.2rem;
+margin-bottom:40px;
+max-width:600px;
 }
 
 .button{
-    background:var(--accent);
-    color:white;
-    padding:12px 24px;
-    border-radius:8px;
-    text-decoration:none;
+padding:15px 30px;
+background:var(--accent);
+color:white;
+border-radius:12px;
+text-decoration:none;
+transition:.3s;
 }
 
 .button:hover{
-    background:var(--highlight);
+background:var(--highlight);
+transform:translateY(-2px);
 }
+
+/* SECTIONS */
 
 section{
-    padding:4rem 10%;
+padding:80px 10%;
 }
 
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:1.5rem;
+.section-title{
+font-size:2rem;
+margin-bottom:30px;
+}
+
+/* CARDS */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
 }
 
 .card{
-    background:var(--panel);
-    border-radius:12px;
-    overflow:hidden;
+background:var(--panel);
+border-radius:15px;
+overflow:hidden;
+transition:.3s;
 }
 
-.placeholder{
-    height:250px;
-    background:#2e382e;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+.card:hover{
+transform:translateY(-5px);
+}
+
+.card img{
+width:100%;
+display:block;
 }
 
 .card-content{
-    padding:1rem;
+padding:20px;
 }
+
+/* STATUS BOX */
+
+.status{
+background:#1d2b1d;
+padding:20px;
+border-left:5px solid var(--highlight);
+border-radius:10px;
+}
+
+/* FOOTER */
 
 footer{
-    text-align:center;
-    padding:2rem;
-    background:#111;
+padding:40px;
+text-align:center;
+background:black;
+margin-top:50px;
 }
-</style>
 
+</style>
 </head>
 
 <body>
 
+<div class="firefly"></div>
+<div class="firefly"></div>
+<div class="firefly"></div>
+
 <nav>
 <ul>
-<li><a href="#">Home</a></li>
+<li><a href="index.html">Home</a></li>
 <li><a href="gallery.html">Gallery</a></li>
 <li><a href="commissions.html">Commissions</a></li>
 <li><a href="adopts.html">Adopts</a></li>
@@ -131,8 +217,10 @@ footer{
 </ul>
 </nav>
 
-<div class="hero">
+<section class="hero">
+
 <h1>WiltedCamelia</h1>
+
 <p>
 Character Art • Commissions • Adopts
 <br><br>
@@ -142,45 +230,86 @@ Growing stories from forgotten gardens.
 <a class="button" href="gallery.html">
 View Gallery
 </a>
-</div>
+
+</section>
 
 <section>
-<h2>Featured Artwork</h2>
 
-<div class="cards">
+<h2 class="section-title">
+Commission Status
+</h2>
 
-<div class="card">
-<div class="placeholder">
-Artwork 1
-</div>
-<div class="card-content">
-Featured Piece
-</div>
+<div class="status">
+🟢 OPEN — Currently accepting commissions.
 </div>
 
-<div class="card">
-<div class="placeholder">
-Artwork 2
-</div>
-<div class="card-content">
-Featured Piece
-</div>
-</div>
+</section>
+
+<section>
+
+<h2 class="section-title">
+Featured Artwork
+</h2>
+
+<div class="grid">
 
 <div class="card">
-<div class="placeholder">
-Artwork 3
-</div>
+<img src="images/art1.png">
 <div class="card-content">
-Featured Piece
+Featured Artwork
+</div>
+</div>
+
+<div class="card">
+<img src="images/art2.png">
+<div class="card-content">
+Featured Artwork
+</div>
+</div>
+
+<div class="card">
+<img src="images/art3.png">
+<div class="card-content">
+Featured Artwork
 </div>
 </div>
 
 </div>
+
+</section>
+
+<section>
+
+<h2 class="section-title">
+Latest Adopts
+</h2>
+
+<div class="grid">
+
+<div class="card">
+<div class="card-content">
+🌿 Forest Fox
+<br>
+Available
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+🍄 Moth Dragon
+<br>
+Available
+</div>
+</div>
+
+</div>
+
 </section>
 
 <footer>
-© 2026 WiltedCamelia
+
+WiltedCamelia © 2026
+
 </footer>
 
 </body>
