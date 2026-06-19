@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -9,11 +10,13 @@
 <style>
 
 :root{
---bg:#0d120f;
---panel:#182019;
---accent:#5d7a54;
---highlight:#a7c795;
---text:#ece6db;
+--bg:#0b110d;
+--bg2:#101914;
+--panel:rgba(24,32,25,0.8);
+--accent:#6d8a61;
+--highlight:#b9d4a7;
+--text:#f0eadf;
+--border:rgba(185,212,167,0.15);
 }
 
 *{
@@ -27,18 +30,16 @@ scroll-behavior:smooth;
 }
 
 body{
-background:linear-gradient(
-180deg,
-#0d120f,
-#111814,
-#0d120f
-);
+background:
+radial-gradient(circle at top,#1b2a20 0%,transparent 35%),
+linear-gradient(180deg,#0b110d,#101914,#0b110d);
 color:var(--text);
-font-family:Georgia, serif;
+font-family:Georgia,serif;
 overflow-x:hidden;
+line-height:1.7;
 }
 
-/* FIRELIES */
+/* Fireflies */
 
 .firefly{
 position:fixed;
@@ -47,27 +48,13 @@ height:4px;
 background:#d8f0a4;
 border-radius:50%;
 box-shadow:0 0 15px #d8f0a4;
-animation:float 8s infinite ease-in-out;
 pointer-events:none;
+animation:float 8s infinite ease-in-out;
 }
 
-.firefly:nth-child(1){
-left:20%;
-top:20%;
-animation-delay:0s;
-}
-
-.firefly:nth-child(2){
-left:60%;
-top:60%;
-animation-delay:2s;
-}
-
-.firefly:nth-child(3){
-left:80%;
-top:30%;
-animation-delay:4s;
-}
+.firefly:nth-child(1){left:20%;top:20%;}
+.firefly:nth-child(2){left:70%;top:60%;animation-delay:2s;}
+.firefly:nth-child(3){left:80%;top:30%;animation-delay:4s;}
 
 @keyframes float{
 50%{
@@ -75,27 +62,30 @@ transform:translateY(-30px);
 }
 }
 
-/* NAV */
+/* Navigation */
 
 nav{
 position:sticky;
 top:0;
-background:rgba(0,0,0,0.75);
-backdrop-filter:blur(8px);
-padding:20px;
 z-index:100;
+backdrop-filter:blur(10px);
+background:rgba(0,0,0,.55);
+border-bottom:1px solid var(--border);
 }
 
 nav ul{
 display:flex;
 justify-content:center;
-gap:40px;
+flex-wrap:wrap;
+gap:35px;
+padding:20px;
 list-style:none;
 }
 
 nav a{
-color:var(--text);
 text-decoration:none;
+color:var(--text);
+letter-spacing:1px;
 transition:.3s;
 }
 
@@ -103,7 +93,7 @@ nav a:hover{
 color:var(--highlight);
 }
 
-/* HERO */
+/* Hero */
 
 .hero{
 min-height:100vh;
@@ -112,63 +102,110 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
-padding:40px;
+padding:2rem;
+position:relative;
+}
+
+.hero::before{
+content:"❀";
+position:absolute;
+top:15%;
+left:15%;
+font-size:4rem;
+opacity:.08;
+}
+
+.hero::after{
+content:"❀";
+position:absolute;
+bottom:15%;
+right:15%;
+font-size:4rem;
+opacity:.08;
 }
 
 .hero h1{
-font-size:6rem;
+font-size:clamp(3.5rem,10vw,7rem);
 margin-bottom:20px;
-text-shadow:0 0 20px rgba(255,255,255,.1);
+letter-spacing:3px;
+text-shadow:0 0 30px rgba(255,255,255,.08);
+}
+
+.hero .subtitle{
+font-style:italic;
+color:var(--highlight);
+margin-bottom:25px;
 }
 
 .hero p{
-font-size:1.2rem;
-margin-bottom:40px;
-max-width:600px;
+max-width:700px;
+font-size:1.15rem;
+opacity:.9;
 }
 
 .button{
-padding:15px 30px;
+display:inline-block;
+margin-top:35px;
+padding:15px 35px;
 background:var(--accent);
 color:white;
-border-radius:12px;
 text-decoration:none;
+border-radius:999px;
 transition:.3s;
 }
 
 .button:hover{
+transform:translateY(-3px);
 background:var(--highlight);
-transform:translateY(-2px);
+color:#111;
 }
 
-/* SECTIONS */
+/* Sections */
 
 section{
-padding:80px 10%;
+padding:100px 10%;
 }
 
 .section-title{
-font-size:2rem;
-margin-bottom:30px;
+text-align:center;
+font-size:2.3rem;
+margin-bottom:15px;
+color:var(--highlight);
 }
 
-/* CARDS */
+.section-subtitle{
+text-align:center;
+opacity:.75;
+margin-bottom:50px;
+}
+
+.divider{
+text-align:center;
+margin:30px 0;
+font-size:1.3rem;
+opacity:.5;
+}
+
+/* Cards */
 
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:25px;
+gap:30px;
 }
 
 .card{
 background:var(--panel);
-border-radius:15px;
+border:1px solid var(--border);
+border-radius:20px;
 overflow:hidden;
 transition:.3s;
+backdrop-filter:blur(10px);
 }
 
 .card:hover{
-transform:translateY(-5px);
+transform:translateY(-6px);
+box-shadow:0 0 25px rgba(185,212,167,.08);
 }
 
 .card img{
@@ -177,28 +214,50 @@ display:block;
 }
 
 .card-content{
-padding:20px;
+padding:25px;
 }
 
-/* STATUS BOX */
+/* Status */
 
 .status{
-background:#1d2b1d;
-padding:20px;
-border-left:5px solid var(--highlight);
-border-radius:10px;
+max-width:700px;
+margin:auto;
+padding:25px;
+background:rgba(109,138,97,.08);
+border:1px solid var(--border);
+border-radius:20px;
+text-align:center;
 }
 
-/* FOOTER */
+/* Footer */
 
 footer{
-padding:40px;
 text-align:center;
-background:black;
-margin-top:50px;
+padding:60px 20px;
+border-top:1px solid var(--border);
+opacity:.8;
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+section{
+padding:70px 7%;
+}
+
+.hero{
+min-height:85vh;
+}
+
+nav ul{
+gap:20px;
+}
+
 }
 
 </style>
+
 </head>
 
 <body>
@@ -221,56 +280,66 @@ margin-top:50px;
 
 <h1>WiltedCamelia</h1>
 
+<div class="subtitle">
+A garden of wandering creatures and forgotten stories
+</div>
+
 <p>
-Character Art • Commissions • Adopts
-<br><br>
-Growing stories from forgotten gardens.
+Hidden beneath moonlit glass and tangled ivy lies a collection
+of character art, adoptables, and worlds still waiting to bloom.
 </p>
 
 <a class="button" href="gallery.html">
-View Gallery
+Enter the Conservatory
 </a>
 
 </section>
 
 <section>
 
-<h2 class="section-title">
-Commission Status
-</h2>
+<h2 class="section-title">🌿 About the Garden</h2>
 
-<div class="status">
-🟢 OPEN — Currently accepting commissions.
-</div>
+<div class="divider">✦ ⊱🌿⊰ ✦</div>
+
+<p style="max-width:800px;margin:auto;text-align:center;">
+WiltedCamelia is a home for original characters, fantasy creatures,
+illustrations, and stories. Wander through the conservatory,
+discover new adopts, commission custom artwork, or simply
+enjoy the collection of creatures growing among the vines.
+</p>
 
 </section>
 
 <section>
 
-<h2 class="section-title">
-Featured Artwork
-</h2>
+<h2 class="section-title">🌙 Featured Blooms</h2>
+<p class="section-subtitle">
+Recent illustrations gathered from the greenhouse.
+</p>
 
 <div class="grid">
 
 <div class="card">
 <img src="images/art1.png">
 <div class="card-content">
-Featured Artwork
+<b>Moonlit Wanderer</b><br><br>
+A traveler beneath silver leaves.
 </div>
 </div>
 
 <div class="card">
 <img src="images/art2.png">
 <div class="card-content">
-Featured Artwork
+<b>Garden Guardian</b><br><br>
+An old spirit watching hidden paths.
 </div>
 </div>
 
 <div class="card">
 <img src="images/art3.png">
 <div class="card-content">
-Featured Artwork
+<b>Blooming Dreams</b><br><br>
+A story still unfolding.
 </div>
 </div>
 
@@ -280,28 +349,42 @@ Featured Artwork
 
 <section>
 
-<h2 class="section-title">
-Latest Adopts
-</h2>
+<h2 class="section-title">🦋 Wandering Spirits</h2>
+
+<p class="section-subtitle">
+Creatures currently searching for a keeper.
+</p>
 
 <div class="grid">
 
 <div class="card">
 <div class="card-content">
-🌿 Forest Fox
-<br>
-Available
+🌿 <b>Forest Fox</b><br><br>
+Found resting beneath ancient roots.<br><br>
+Status: Available
 </div>
 </div>
 
 <div class="card">
 <div class="card-content">
-🍄 Moth Dragon
-<br>
-Available
+🍄 <b>Moth Dragon</b><br><br>
+Discovered sleeping among moonflowers.<br><br>
+Status: Available
 </div>
 </div>
 
+</div>
+
+</section>
+
+<section>
+
+<h2 class="section-title">📖 The Gardener's Ledger</h2>
+
+<div class="status">
+🟢 OPEN<br><br>
+The garden is currently accepting new commissions,
+character artwork, reference sheets, and custom designs.
 </div>
 
 </section>
@@ -309,6 +392,10 @@ Available
 <footer>
 
 WiltedCamelia © 2026
+
+<br><br>
+
+Growing stories from forgotten gardens.
 
 </footer>
 
