@@ -113,3 +113,16 @@ h1{
 }
 
 </style>
+
+body, html {
+  min-height: 100%;
+}
+
+.container, .gallery, .hero {
+  position: relative;
+  z-index: 2;
+}
+
+body::before {
+  z-index: 0;
+}
