@@ -1,100 +1,149 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Commissions | WiltedCamelia</title>
-
 <style>
-body{
-    background:#0d120f;
-    color:#ece6db;
-    font-family:Georgia,serif;
-    margin:0;
+
+:root{
+  --bg:#080707;
+  --bg2:#120f0f;
+  --panel:#181414;
+  --panel2:#201b1b;
+  --gold:#c4aa8a;
+  --rose:#7b5656;
+  --text:#ece4d7;
+  --muted:#a69686;
+  --border:rgba(196,170,138,.15);
 }
 
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:
+    radial-gradient(circle at top, rgba(123,86,86,.08), transparent 40%),
+    linear-gradient(180deg, var(--bg), var(--bg2), var(--bg));
+
+  color:var(--text);
+  font-family:"Cormorant Garamond",serif;
+  line-height:1.8;
+  overflow-x:hidden;
+}
+
+/* subtle atmospheric texture */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,.015), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255,255,255,.01), transparent 40%);
+  pointer-events:none;
+  z-index:0;
+}
+
+/* NAV (unified aesthetic) */
 nav{
-    background:#111;
-    padding:20px;
-    text-align:center;
+  position:sticky;
+  top:0;
+  z-index:999;
+  backdrop-filter:blur(12px);
+  background:rgba(0,0,0,.5);
+  border-bottom:1px solid var(--border);
+  text-align:center;
+  padding:18px;
 }
 
 nav a{
-    color:#ece6db;
-    text-decoration:none;
-    margin:0 15px;
+  color:var(--text);
+  text-decoration:none;
+  margin:0 15px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  font-size:.9rem;
+  transition:.3s;
 }
 
+nav a:hover{
+  color:var(--gold);
+}
+
+/* layout container */
 .container{
-    max-width:900px;
-    margin:auto;
-    padding:40px;
+  max-width:900px;
+  margin:auto;
+  padding:60px 25px;
+  position:relative;
+  z-index:2;
 }
 
-.price-box{
-    background:#182019;
-    padding:20px;
-    border-radius:15px;
-    margin-bottom:20px;
+/* title */
+h1{
+  font-family:"Cinzel",serif;
+  text-align:center;
+  margin-bottom:30px;
+  color:var(--gold);
+  letter-spacing:3px;
 }
 
+/* STATUS BADGE (now feels like a sealed wax stamp) */
 .status{
-    background:#1f2c1f;
-    border-left:5px solid #9fe68d;
-    padding:15px;
-    border-radius:10px;
-    margin-bottom:30px;
+  background:rgba(123,86,86,.15);
+  border:1px solid var(--border);
+  border-left:4px solid var(--gold);
+  padding:15px 18px;
+  border-radius:12px;
+  margin-bottom:35px;
+
+  color:var(--text);
+  letter-spacing:2px;
 }
+
+/* PRICING CARDS (now like archived specimen labels) */
+.price-box{
+  background:rgba(255,255,255,.02);
+  border:1px solid var(--border);
+  padding:22px;
+  border-radius:14px;
+  margin-bottom:18px;
+
+  transition:.3s ease;
+}
+
+.price-box:hover{
+  transform:translateY(-4px);
+  border-color:rgba(196,170,138,.35);
+  background:rgba(255,255,255,.03);
+}
+
+.price-box h2{
+  color:var(--gold);
+  margin-bottom:6px;
+  font-family:"Cinzel",serif;
+  letter-spacing:2px;
+}
+
+.price-box p{
+  color:var(--muted);
+  font-size:1.1rem;
+}
+
+/* LIST HEADINGS */
+h2{
+  margin-top:30px;
+  color:var(--gold);
+  font-family:"Cinzel",serif;
+  letter-spacing:2px;
+}
+
+/* LIST STYLING */
+ul{
+  margin-top:10px;
+  padding-left:20px;
+  color:var(--muted);
+}
+
+li{
+  margin:6px 0;
+}
+
 </style>
-</head>
-
-<body>
-
-<nav>
-<a href="index.html">Home</a>
-<a href="gallery.html">Gallery</a>
-<a href="adopts.html">Adopts</a>
-<a href="commissions.html">Commissions</a>
-<a href="contact.html">Contact</a>
-</nav>
-
-<div class="container">
-
-<h1>Commissions</h1>
-
-<div class="status">
-🟢 Commissions Open
-</div>
-
-<div class="price-box">
-<h2>Headshot</h2>
-<p>$15 AUD</p>
-</div>
-
-<div class="price-box">
-<h2>Half Body</h2>
-<p>$25 AUD</p>
-</div>
-
-<div class="price-box">
-<h2>Full Body</h2>
-<p>$40 AUD</p>
-</div>
-
-<h2>Will Draw</h2>
-<ul>
-<li>Furries</li>
-<li>Original Characters</li>
-<li>Fan Characters</li>
-</ul>
-
-<h2>Won't Draw</h2>
-<ul>
-<li>Hate Art</li>
-<li>Heavy Gore</li>
-</ul>
-
-</div>
-
-</body>
-</html>
